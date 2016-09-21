@@ -1,0 +1,6 @@
+MAILTO=""
+0 11,18 * * 1-5  sh ./TOS-B/panggilEmas.sh|vi i ./TOS-B/HargaEmas.txt
+0 8-18 * * 1-5  sh ./TOS-B/Mandiri.sh|vi i ./TOS-B/MandiriSGD.txt
+0 8-18 * * 1-5  sh ./TOS-B/lab03-26415134.sh|vi i ./TOS-B/MandiriUSD.txt
+0 8-18 * * 1-5  sh ./TOS-B/bcaSGD.sh|vi i ./TOS-B/bcaSGD.txt
+0 8-18 * * 1-5  sh ./TOS-B/BCA.sh|vi i ./TOS-B/bcaUSD.txt
