@@ -1,0 +1,40 @@
+=============== NO 1 =========
+
+HargaIphone.sh: 
+#!/bin/bash
+
+Harga=`curl -s http://www.elevenia.co.id/prd-apple-iphone-7-plus-black-128gb-garansi-6242166 | grep "price notranslate" -A2 | cut -d"<" -f2 | cut -d">" -f2 | cut -d"p" -f2 | xargs`
+
+
+echo $Harga >> hargaiPhone.txt
+
+if [harga -lt 15.000.000] then 
+$ mail -s "Harga Iphone 15 juta" m26415134@john.petra.ac.id <<< 'Harga Iphone murah woy'
+fi 
+
+
+crontab : 
+
+0 7-19 * * 1-5 /home/m26415134/TOS-B/hargaIphone.sh
+
+
+============= NO 2 ==================
+
+#!/bin/sh 
+
+code=`curl -s http://stats.labs.apnic.net/ipv6/ID | grep "AS" -A2 | cut -d">" -f2 | cut -d"<" -f1` | cut -d"S" -f2
+
+Perusahaan=`curl -s http://stats.labs.apnic.net/ipv6/ID | grep "AS" -A2 | cut -d'"' -f6`
+
+capable=`curl -s  http://stats.labs.apnic.net/ipv6/ID | grep "AS" -A2 | cut -d'"' -f7 | cut -d"'" -f2`
+
+preferred=`curl -s http://stats.labs.apnic.net/ipv6/ID | grep "AS" -A2 | cut -d'"' -f7 | cut -d"'" -f4`
+
+samples=`curl -s http://stats.labs.apnic.net/ipv6/ID | grep "AS" -A2 | cut -d'"' -f7 | cut -d"," -f6 | cut -d"]" -f1`
+
+
+
+echo "AS"$code";"$Perusahaan";"$capable";"$preferred";"$samples"\n" >> IPv6.csv
+
+
+sort -n IPv6.csv
